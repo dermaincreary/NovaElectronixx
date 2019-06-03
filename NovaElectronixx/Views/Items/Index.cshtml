@@ -1,0 +1,54 @@
+﻿@model IEnumerable<NovaElectronixx.Models.Item>
+
+@{
+    ViewBag.Title = "Nova Electronixx Items";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var purchCount = Model.Count();
+}
+
+<h2>Index</h2>
+<h3>@purchCount</h3>
+
+
+<p>
+    @Html.ActionLink("Create New Item", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SKU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.link)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SKU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemName)
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.link)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
